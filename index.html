@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(
+                135deg,
+                #fff0f5,
+                #ffe0ec,
+                #ffd1e3,
+                #fff5f8
+            );
+            color: #8f4564;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        
+        /* FLOATING HEARTS BACKGROUND */
+
+        .hearts {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -60px;
+            color: rgba(255, 105, 180, 0.45);
+            animation: floatUp linear infinite;
+            user-select: none;
+        }
+
+        .heart:nth-child(1) {
+            left: 5%;
+            animation-duration: 12s;
+            font-size: 25px;
+        }
+
+        .heart:nth-child(2) {
+            left: 18%;
+            animation-duration: 9s;
+            font-size: 17px;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            left: 32%;
+            animation-duration: 14s;
+            font-size: 30px;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(4) {
+            left: 47%;
+            animation-duration: 13s;
+            font-size: 20px;
+            animation-delay: 4s;
+        }
+
+        .heart:nth-child(5) {
+            left: 60%;
+            animation-duration: 10s;
+            font-size: 26px;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(6) {
+            left: 74%;
+            animation-duration: 10s;
+            font-size: 18px;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(7) {
+            left: 88%;
+            animation-duration: 15s;
+            font-size: 32px;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(8) {
+            left: 95%;
+            animation-duration: 12s;
+            font-size: 19px;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+
+            85% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* GENERAL SECTION */
+
+        header,
+        section,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px 40px;
+            position: relative;
+        }
+
+        header p {
+            max-width: 600px;
+            font-size: 14px;
+            line-height: 1.8;
+            letter-spacing: 2px;
+            margin: 0 auto;
+            flex-shrink: 0;
+            animation: none;
+}
+
+        .scroll-note {
+            margin-top: 45px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            animation: gentleBounce 2s infinite;
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+}
+
+        .small-title {
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c76a91;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 8vw, 75px);
+            color: #c94f83;
+            margin-bottom: 20px;
+            text-shadow: 2px 3px 10px #f7b6b0;
+            animation: pinkBlink 2s ease-in-out infinite;
+        }
+
+        @keyframes pinkBlink {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 2px 3px 10px #f7b6b0;
+            }
+
+            50% {
+                opacity: 0.65;
+                text-shadow: 0 0 20px #ff8fbd,
+                             0 0 35px #ffc1dc;
+            }
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        section {
+            padding: 80px 7%;
+        }
+
+        h2 {
+            color: #c94f83;
+            font-size: clamp(30px, 5vw, 44px);
+            margin-bottom: 25px;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        /* ABOUT ME */
+
+        .photo-gallery.about-photos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            align-items: start;
+        }
+
+        .photo-gallery.about-photos .photo-card {
+            width: 100%;
+            min-width: 0;
+            padding: 5px;
+            border-radius: 12px;
+        }
+
+        .photo-gallery.about-photos .photo-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-card {
+            max-width: 750px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                #fff5f9,
+                #ffe0ec,
+                #ffd1e3
+            );
+            border: 2px solid rgba(255, 160, 190, 0.6);
+            box-shadow: 0 10px 30px rgba(201, 79, 131, 0.12);
+            line-height: 2;
+            font-size: 17px;
+        }
+
+        /* INTRO CARD */
+
+        .about-card strong {
+            color: #c94f83;
+        }
+
+        .intro-card {
+            max-width: 750px;
+            margin: 25px auto 0;
+            padding: 30px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                #fff0f6,
+                #ffd9e9,
+            #fff5f9
+        );
+
+            border: 2px solid #ffb6d0;
+            box-shadow: 0 8px 25px rgba(201, 79, 131, 0.15);
+        }
+
+        .intro-card h3 {
+            color: #c94f83;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .intro-card p {
+            color: #8f4564;
+            font-size: 16px;
+            line-height: 1.9;
+            letter-spacing: 0.3px;
+        }
+
+        /* HOBBIES CARD */
+
+        .hobbies-card {
+            max-width: 750px;
+            margin: 0;
+            padding: 25px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                #ffeaf3,
+                #ffc9df,
+                #fff0f7
+            );
+            border: 2px solid #ffb6d0;
+            box-shadow: 0 8px 25px rgba(201, 79, 131, 0.12);
+            line-height: 2;
+            font-size: 17px;
+            flex: 1;
+            align-self: stretch;
+        }
+
+        .hobbies-card h3 {
+            color: #c94f83;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .hobbies-card p {
+            line-height: 1.8;
+        }
+
+        .hobby-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 650px;
+            margin: 25px auto;
+        }
+
+        .hobby-item {
+            background: linear-gradient(135deg, #fffafd, #ffe8f1);
+            padding: 10px;
+            border: 2px solid #ffb6d0;
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(201, 79, 131, 0.13);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+        .hobby-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(201, 79, 131, 0.22);
+        }
+
+        .hobby-item img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 11px;
+        }
+
+        .hobby-item p {
+            color: #c94f83;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 400px) 
+        
+        {
+
+        .hobby-gallery {
+            gap: 10px;
+        }
+
+        .hobby-item {
+            padding: 7px;
+        }
+
+        .hobby-item p {
+            font-size: 13px;
+        }
+    }
+
+        .hobbies-main-title {
+            text-align: center;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 35px;
+            padding: 20px 35px;
+            color: #c94f83;
+            font-size: clamp(23px, 4vw, 36px);
+            line-height: 1.4;
+            background: linear-gradient(
+            135deg,
+            #fff5f9,
+            #ffe0ec,
+            #fff0f7
+        );
+        
+            border: 2px solid #ffb6d0;
+            border-radius: 25px;
+            box-shadow:
+                0 8px 25px rgba(201, 79, 131, 0.15),
+                0 0 15px rgba(255, 143, 189, 0.15);
+            animation: titleFloat 3s ease-in-out infinite;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .hobbies-main-title:hover {
+            box-shadow:
+            0 10px 30px rgba(201, 79, 131, 0.25),
+            0 0 25px rgba(255, 143, 189, 0.4);
+    }
+
+        .typing-title {
+            display: inline-block;
+            width: 0;
+            max-width: fit-content;
+            overflow: hidden;
+            white-space: nowrap;
+            vertical-align: bottom;
+            border-right: 3px solid #c94f83;
+            animation:
+                typing 4s steps(33, end) forwards,
+                blinkCursor 0.7s step-end infinite;
+    }
+
+        @keyframes typing {
+            from {
+                width: 0;
+    }
+
+            to {
+                width: 33ch;
+    }
+}
+
+        @keyframes blinkCursor {
+            from, to {
+                border-color: transparent;
+    }
+
+            50% {
+                border-color: #c94f83;
+    }
+}
+
+        .favorites-card {
+            background: linear-gradient(135deg, #fff0f7, #f8d9f0, #ffe0ec);
+            border: 2px solid #ffb6d0;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(255, 143, 189, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            align-self: stretch;
+        }
+
+        .favorites-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 143, 189, 0.3);
+        }
+
+        .hobbies-favorites-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) 
+        {
+
+        .hobbies-favorites-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+        /* PHOTO GALLERY */
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 35px auto 0;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 12px;
+            border: 2px solid #ffb6b0;
+            border-radius: 18px;
+            box-shadow: 0 8px 225px rgba(201, 79, 131, 0.15);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 14px 30px rgba(201, 79, 131, 0.25);
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .photo-card p{
+            padding: 12px 4px 4px;
+            font-size: 15px
+        }
+
+        /* MY MEANINGFUL SILENCE TITLE */
+
+    /* MEMORIES HEADING */
+
+    .memories-heading {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto 35px;
+        padding: 10px 15px;
+        box-sizing: border-box;
+}
+
+    /* SCROLL FOR MORE MEMORIES */
+
+    .memories-scroll {
+        color: #c94f83;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        margin: 0 0 18px;
+        animation: scrollHint 2s ease-in-out infinite;
+}
+
+    /* MAIN TITLE */
+
+    .homies-title {
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 20px 28px;
+        color: #b8326b;
+        font-family: Georgia, serif;
+        font-size: clamp(28px, 4.5vw, 42px);
+        font-weight: bold;
+        line-height: 1.35;
+        text-align: center;
+        background: linear-gradient(
+            135deg,
+            #fff5f9,
+            #ffc9df,
+            #f8d9f0,
+            #fff0f7
+    );
+        border: 2px solid #d94f88;
+        border-radius: 25px;
+        box-shadow:
+            0 8px 25px rgba(201, 79, 131, 0.2),
+            0 0 20px rgba(255, 143, 189, 0.2);
+        animation: none;
+        transition: box-shadow 0.3s ease;
+}
+
+    .homies-title:hover {
+        box-shadow:
+            0 12px 30px rgba(201, 79, 131, 0.3),
+            0 0 28px rgba(255, 143, 189, 0.35);
+}
+
+    .shimmer-text {
+        display: inline-block;
+        background: linear-gradient(
+            110deg,
+            #b8326b 20%,
+            #b8326b 40%,
+            #ffffff 50%,
+            #f18bb8 60%,
+            #b8326b 80%
+    );
+        background-size: 250% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        animation: textShimmer 5s linear infinite;
+}
+
+    @keyframes textShimmer {
+        to {
+            background-position: 250% center;
+    }
+}
+
+    /* SCROLL HINT ANIMATION */
+
+    @keyframes scrollHint {
+        0%, 100% {
+            opacity: 0.65;
+            transform: translateY(0);
+    }
+
+        50% {
+            opacity: 1;
+            transform: translateY(5px);
+    }
+}
+
+    /* MOBILE */
+
+@media (max-width: 600px) {
+    .memories-heading {
+        margin-bottom: 25px;
+        padding: 8px 5px;
+    }
+
+    .memories-scroll {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+    }
+
+    .homies-title {
+        padding: 18px 20px;
+        border-radius: 20px;
+    }
+}
+
+    .homies-lyrics {
+        max-width: 650px;
+        margin: 25px auto 0;
+        padding: 0 20px;
+        color: #b8326b;
+        font-family: Georgia, serif;
+        font-size: clamp(15px, 2.5vw, 19px);
+        font-style: italic;
+        line-height: 1.9;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(201, 79, 131, 0.12);
+}
+
+    .homies-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 35px;
+        width: 100%;
+        max-width: 1200px;
+        margin:45px auto 0;
+        padding: 15px;
+        box-sizing: border-box;
+        position: relative;
+        margin-top: 60px;
+        padding-top: 15px;
+        isolation: isolate;
+}
+
+    .polaroid {
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        padding: 10px 10px 12px;
+        background: #ffc1dc;
+        border: 3px solid #d94f88;
+        border-radius: 5px;
+        box-shadow: 0 7px 18px rgba(164, 35, 91, 0.25);
+        box-sizing: border-box;
+        animation: polaroidFloat 3s ease-in-out infinite;
+        transition: box-shadow 0.3s ease;
+}
+
+    .polaroid img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: min(280px, 70vw);
+        max-height: 350px;
+        object-fit: contain;
+}
+
+    .polaroid:nth-child(odd) {
+        rotate: -3deg;
+}
+
+    .polaroid:nth-child(even) {
+        rotate: 3deg;
+}
+
+    .polaroid:nth-child(4n + 2) {
+        animation-delay: 0.5s;
+}
+
+    .polaroid:nth-child(4n + 3) {
+        animation-delay: 1s;
+}
+
+    .polaroid:nth-child(4n + 4) {
+        animation-delay: 1.5s;
+}
+
+    .polaroid:hover {
+        animation-play-state: paused;
+        translate: 0 -8px;
+        scale: 1.04;
+        box-shadow: 0 14px 28px rgba(164, 35, 91, 0.35);
+        z-index: 2;
+}
+
+    @keyframes polaroidFloat {
+        0%, 100% {
+            translate: 0 0;
+    }
+
+        50% {
+            translate: 0 -4px;
+    }
+}
+
+    @media (max-width: 600px) {
+        
+        .homies-gallery {
+            gap: 22px 15px;
+            padding: 8px;
+    }
+
+        .polaroid {
+            padding: 7px;
+            border-width: 2px;
+    }
+
+        .polaroid img {
+            max-width: 38vw;
+            max-height: 250px;
+    }
+}
+
+        /* SCROLL REVEAL */
+
+        .reveal {
+            opacity: 1;
+            transform: translateY(35px);
+            animation: revealOnScroll linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 40%
+        }
+
+        @keyframes revealOnScroll {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ENDING */
+
+        footer {
+            padding: 100px 20px;
+        }
+
+        footer h2 {
+            font-size: clamp(30px, 5vw, 45px);
+        }
+
+        footer p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .final-heart {
+            color: #e75480;
+            font-size: 45px;
+            margin-top: 25px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .copyright {
+            margin-top: 45px;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        /* MOBILE FRIENDLY */
+
+        @media (max-width: 600px) {
+            section {
+                padding: 65px 5%;
+            }
+
+            .photo-card {
+                padding: 6px;
+                border-radius: 12px;
+            }
+
+            .photo-card img {
+                border-radius: 8px;
+            }
+
+            .photo-card p {
+                font-size: 12px;
+            }
+
+            .about-card {
+                padding: 25px 18px;
+            }
+
+            header p,
+            .section-description,
+            footer p {
+                font-size: 16px;
+            }
+        }
+
+        /* WEBSITE FOOTER */
+
+    .site-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: none;
+        box-sizing: border-box;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        margin-top: 70px;
+        padding: 35px 20px 25px;
+        text-align: center;
+        background: linear-gradient(
+            135deg,
+            #ffeaf3,
+            #ffc9df,
+            #fff0f7
+    );
+        border-top: 2px solid #f7a5c7;
+}
+
+    .site-footer p {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+        box-sizing: border-box;
+}
+
+    .footer-heart {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #d94f88;
+        font-size: 30px;
+        animation: footerHeartbeat 2s ease-in-out infinite;
+}
+
+    .footer-message {
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #b8326b;
+        font-family: Georgia, serif;
+        font-size: clamp(10px, 3vw, 21px);
+        font-style: italic;
+}
+
+    .footer-credit {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #c94f83;
+        font-size: 15px;
+        font-weight: bold;
+}
+
+    .footer-copyright {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #bd7896;
+        font-size: 12px;
+        letter-spacing: 1px;
+}
+
+    @keyframes footerHeartbeat {
+        0%, 100% {
+            transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+    @media (max-width: 600px) {
+        .site-footer {
+            margin-top: 45px;
+            padding: 28px 15px 20px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- FLOATING HEARTS -->
+    <div class="hearts">
+        <span class="heart">♥</span>
+        <span class="heart">♡</span>
+        <span class="heart">♥</span>
+        <span class="heart">♡</span>
+        <span class="heart">♥</span>
+        <span class="heart">♡</span>
+        <span class="heart">♥</span>
+        <span class="heart">♡</span>
+    </div>
+
+    <!-- WELCOME SECTION -->
+    <header>
+        <div class="small-title">Clarisa Mae De Guzman</div>
+
+        <h1>Welcome to Her First Website</h1>
+
+        <p class="welcome-message">
+            Annyeong, Sawadee kha, Ni Hao! ♡ You can call her <b>Clarisa</b>, a little dreamer who finds poetry in passing moments, magic in ordinary days, and beauty in the little things most people overlook. 
+            </p>
+            <br>
+            <p>
+            Welcome to her tiny corner of the internet, where memories bloom into stories, familiar souls find a home, and life's simplest wonders are kept a little closer.
+            Come wander through her little universe, stay for a while, and make yourself at home.
+            She's happy your paths crossed here. ୨ৎ
+        </p>
+
+        <div class="scroll-note">
+            SCROLL DOWN TO EXPLORE ↓
+        </div>
+    </header>
+
+    <!-- ABOUT ME SECTION -->
+     <section class="reveal">
+        <h2> The Girl Behind The Pages ♡</h2>
+
+        <p class="section-description">
+            And who might she be, you wonder? 
+            Well, every story begins somewhere, and perhaps hers begins here.
+        </p>
+
+        <div class="reveal">
+        <div class="photo-gallery about-photos">
+            
+            <div class="photo-card">
+                <img src="her101.jpg" alt="first photo">
+            </div>
+
+            <div class="photo-card">
+                <img src="her102.jpg" alt="second photo">
+            </div>
+
+            <div class="photo-card">
+                <img src="her103.jpg" alt="third photo">
+            </div>
+        </div>
+        </div>
+
+        <div class="reveal">
+        <div class="about-card">
+            <p><strong> Name:</strong> Clarisa Mae Pagaduan De Guzman</p>
+            <p><strong> Age:</strong> 18 years old</p>
+            <p><strong> Birthday:</strong> November 02, 2007</p>
+            <p><strong>Program:</strong> Bachelor of Science in Information Technology</p>
+            <p><strong>University:</strong> University of Eastern Pangasinan</p>
+        </div>
+        </div>
+
+        <div class="reveal">
+        <div class="intro-card">
+            <h3> A Little More of Her </h3>
+
+        <p> Hi, I'm <b>Clarisa Mae De Guzman</b>, an 18-year-old girl who somehow found herself pursuing <b>Bachelor of Science in Information Technology</b> at <b>University of Eastern Pangasinan</b>,
+            a path she never quite imagined herself taking, and also accidentally became a Block Mayor of her beloved 1G pips.
+            Neither was exactly part of the original plan, but I guess life has its own funny ways of leading us somewhere unexpected.</p>
+        <br>
+        <p> I'm interested in <u>books</u>, <u>science</u>, <u>psychology</u>, <u>traveling</u>, <u>being there for people</u>, and <u>a hundred other things that make this little world interesting</u>.
+            I love learning about how things work, understanding why people think and feel the way they do, discovering places beyond the familiar, and being someone others can turn to when they need a little understanding.</p>
+        <br>
+        <p> Truthfully, I'm still figuring out what to do with my life, where I want to go, and who I want to become. I don't have everything figured out just yet, and I think that's okay.
+            For now, I'm learning to be content with where I am, appreciate the people walking beside me, and find happiness in the little moments that make this chapter of my life worth remembering.
+            After all, I may not know exactly where life is taking me, but I'm grateful for where I am and the people I get to share this journey with. ♡</p>
+    </div>
+    </div>
+<br>
+
+    <div class="reveal">
+    <h2 class="hobbies-main-title">
+        <span class="typing-title">The Little Things That Make Her, Her</span>
+    </h2>
+    
+    <!-- HOBBIES CARD -->
+     <div class="hobbies-favorites-container">
+
+            <div class="hobbies-card reveal">
+            <h4> Her Hobbies</h4>
+
+            <div class="hobby-gallery">
+                <div class="hobby-item">
+                    <img src="writing.jpg" alt="Her Pieces">
+                    <p> Writing</p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="reading.jpg" alt="Read and Learn">
+                    <p> Reading </p>
+                    </div>
+
+            <div class="hobby-item">
+                <img src="watching.jpg" alt="Fave Thing To Do">
+                <p> Watching </p>
+            </div>
+
+            <div class="hobby-item">
+                <img src="music.jpg" alt="Calming Melody">
+                <p> Listening To Music </p>
+            </div>
+
+            <div class="hobby-item">
+                <img src="sleeping.jpg" alt="Her Rest">
+                <p> Sleeping </p>
+                </div>
+                
+            <div class="hobby-item">
+                <img src="captured.jpg" alt="Her Obsession">
+                <p> Taking Random Pics </p>
+            </div>
+                </div>
+            </div>
+
+            <!-- FAVORITES CARD -->
+            <div class="favorites-card reveal">
+            <h4> Her Favorites </h4>
+
+            <div class="hobby-gallery">
+                <div class="hobby-item">
+                    <img src="matcha.jpg" alt="Kambing Yarn">
+                    <p> Matcha </p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="siomai.jpg" alt="Cravings">
+                    <p> Siomai </p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="icecream.jpg" alt="Comfort Food">
+                    <p> Ice Cream </p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="spicy.jpg" alt="Spicy tas iiyak">
+                    <p> Spicy Foods</p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="coffee.jpg" alt="Palpitate later">
+                    <p> Coffee </p>
+                </div>
+
+                <div class="hobby-item">
+                    <img src="homies.jpg" alt="My Homies">
+                <p>My Homies</p>
+                </div>
+            </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                <h2 class="homies-title">
+                    <span class="shimmer-text">⊹ ࣪ ˖꒰ঌ My Meaningful Silence ໒꒱.⋆˚࿔</span>
+                </h2>
+                <div class="homies-gallery">
+
+                <div class="polaroid">
+                    <img src="homies1.jpg" alt="Core Memory 1">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies2.jpg" alt="Core Memory 2">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies3.jpg" alt="Core Memory 3">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies4.jpg" alt="Core Memory 4">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies5.jpg" alt="Core Memory 5">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies6.jpg" alt="Core Memory 6">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies7.jpg" alt="Core Memory 7">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies8.jpg" alt="Core Memory 8">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies9.jpg" alt="Core Memory 9">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies10.jpg" alt="Core Memory 10">
+                    </div>
+
+                    <div class="polaroid">
+                    <img src="homies11.jpg" alt="Core Memory 11">
+                    </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="reveal">
+                    <p class="homies-lyrics">
+    <br>"You don't have to pretend when you're with me
+    <br>'Cause in the end
+    <br><u>I'm still your friend</u>"
+    </p>
+    </div>
+
+    <div class="reveal">
+<footer class="site-footer">
+    <p class="footer-heart">💗</p>
+
+    <p class="footer-message">
+        Some memories never need an ending.
+    </p>
+
+    <p class="footer-credit">
+        Made with love by Clarisa Mae ପ(๑•ᴗ•๑)ଓ
+    </p>
+
+    <p class="footer-copyright">
+        © 2026 · A little piece of her world
+    </p>
+</footer>
+</div>
+
+     </section>
+
+</body>
+</html>
